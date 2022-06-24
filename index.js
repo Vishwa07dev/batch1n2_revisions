@@ -4,6 +4,7 @@
  */
 const connection = require("./utils/database");
 const Student = require("./models/student.model");
+const Marksheet = require("./models/marsheet.model");
 
 
 /**
@@ -21,6 +22,13 @@ connection.sync().then(result => {
 
 }).then(student => {
     console.log("student created");
+
+    /**
+     * Creating the Marksheet table
+     */
+    return Marksheet.create({marks : 100});
+}).then(marks=>{
+    console.log("Marksheet updated");
 })
 .catch(err =>{
     console.log(err);
